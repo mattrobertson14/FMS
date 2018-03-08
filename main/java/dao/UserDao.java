@@ -1,20 +1,41 @@
 package dao;
 
 import java.util.*;
+import java.sql.*;
 
 import models.User;
 
 public class UserDao {
-
-  Database db = new Database();
 
   /**
    * This will attempt to add a new User into the DB
    * @param user a User object
    * @return true if User was successfully added / false if not
    */
-  public boolean newUser(User user){
+  public boolean newUser(User user) throws DatabaseException{
+    if (user == null){
       return false;
+    }
+    Connection conn = null;
+    try {
+      conn = Database.openConnection();
+      Statement stmt = conn.createStatement();
+      String query = String.format("INSERT INTO Users (username, password, email, person_id) VALUES (\"%s\", \"%s\", \"%s\", \"%s\");",user.getUserName(), user.getPassword(), user.getEmail(), user.getPersonId());
+
+      int result = stmt.executeUpdate(query);
+      if (result == 1){
+        return true;
+      } else {
+        return false;
+      }
+    }
+    catch(Exception e){
+      System.out.println(e.getMessage());
+    }
+    finally {
+      Database.closeConnection(conn, true);
+    }
+    return false;
   }
 
   /**
@@ -26,28 +47,37 @@ public class UserDao {
   public boolean newUsers(User[] users) { return false; }
 
   /**
-   * Returns user by their ID
-   * @param userId
+   * Returns user by their username
+   * @param username
    * @return User Object if exists / null if not
    */
-  public User getUser(String userId) throws Database.DatabaseException{
+  public User getUser(String username) throws DatabaseException{
+    Statement stmt;
+    Connection conn = null;
     try {
-      db.openConnection();
-      HashMap<String, String> map = db.getUserByName(userId);
+      conn = Database.openConnection();
+      stmt = conn.createStatement();
 
-      if (map.isEmpty()){
-        return null;
+      String query = "SELECT * FROM Users WHERE username=\'" + username + "\';";
+      User usr = null;
+      ResultSet rs = stmt.executeQuery(query);
+      if (!rs.isBeforeFirst()){
+        return usr;
       }
-      User usr = new User();
-      usr.setId(map.get("id"));
-      usr.setUserName(map.get("username"));
-      usr.setPassword(map.get("password"));
-      usr.setEmail(map.get("email"));
+      usr = new User();
+
+      while(rs.next()){
+        usr.setId(Integer.toString(rs.getInt("id")));
+        usr.setUserName(rs.getString("username"));
+        usr.setPassword(rs.getString("password"));
+        usr.setEmail(rs.getString("email"));
+        usr.setPersonId(rs.getString("person_id"));
+      }
       return usr;
     } catch(Exception e){
       e.printStackTrace();
     } finally {
-      db.closeConnection(true);
+      Database.closeConnection(conn, true);
     }
     return null;
   }
@@ -72,4 +102,17 @@ public class UserDao {
    * @return false on failure
    */
   public boolean deleteAllUsers() { return false; }
+
+  public static void main(String[] args){
+    UserDao ud = new UserDao();
+    User user = new User("michaella", "p@ssw0rd", "mail@mail", null, "0000-0000-0000-0001");
+
+    try {
+      System.out.println(ud.newUser(user));
+      System.out.println(ud.newUser(user));
+    }
+    catch (DatabaseException e){
+      e.printStackTrace();
+    }
+  }
 }

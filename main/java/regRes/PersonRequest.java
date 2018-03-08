@@ -11,6 +11,8 @@ public class PersonRequest {
         this.id = id;
     }
 
+    public PersonRequest(){}
+
     /**
      * returns the id of the requested person
      * @return id

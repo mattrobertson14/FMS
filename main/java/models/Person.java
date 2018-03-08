@@ -1,8 +1,8 @@
 package models;
 
 public class Person {
-    private String id;
     private String descendant;
+    private String personID;
     private String firstName;
     private String lastName;
     private String gender;
@@ -10,19 +10,29 @@ public class Person {
     private String mother = null;
     private String spouse = null;
 
+    public Person(String personID, String descendant, String firstName, String lastName, String gender){
+      this.personID = personID;
+      this.descendant = descendant;
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.gender = gender;
+    }
+
+    public Person(){}
+
     /**
      * Unique identifier for this person (non-empty string)
      * @return String representation of id
      */
     public String getId() {
-        return id;
+        return personID;
     }
 
     /**
      * @param id type String
      */
-    public void setId(String id) {
-        this.id = id;
+    public void setId(String personID) {
+        this.personID = personID;
     }
 
     /**

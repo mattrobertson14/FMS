@@ -8,6 +8,26 @@ public class User {
     private String lastName;
     private String gender;
     private String id;
+    private String personId;
+
+    public User(String userName, String password, String email, String firstName, String lastName, String gender, String id, String personId){
+      this.userName = userName;
+      this.password = password;
+      this.email = email;
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.gender = gender;
+      this.personId = personId;
+    }
+
+    public User(String userName, String password, String email, String id, String personId){
+      this.userName = userName;
+      this.password = password;
+      this.email = email;
+      this.personId = personId;
+    }
+
+    public User(){}
 
     /** Returns String representing User's username
      * @return User's username
@@ -112,5 +132,13 @@ public class User {
      */
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getPersonId() {
+      return personId;
+    }
+
+    public void setPersonId(String id) {
+      personId = id;
     }
 }

@@ -1,7 +1,7 @@
 package regRes;
 
 public class Response {
-    private String message;
+    private String message = null;
 
     /**
      * @return String message (success/failure)

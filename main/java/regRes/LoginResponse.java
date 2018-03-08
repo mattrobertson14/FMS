@@ -25,4 +25,8 @@ public class LoginResponse extends Response {
     public String getAuthToken(){
       return auth.getToken();
     }
+
+    public String getPersonId(){
+      return auth.getPersonId();
+    }
 }

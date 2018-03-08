@@ -3,6 +3,8 @@ package models;
 public class Authentication {
     private String token;
     private String userId;
+    private String personId;
+    private String userName;
 
     /**
      * Token will be a uuid
@@ -32,5 +34,21 @@ public class Authentication {
      */
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public String getPersonId(){
+      return personId;
+    }
+
+    public void setPersonId(String personId){
+      this.personId = personId;
+    }
+
+    public String getUserName(){
+      return userName;
+    }
+
+    public void setUserName(String userName){
+      this.userName = userName;
     }
 }

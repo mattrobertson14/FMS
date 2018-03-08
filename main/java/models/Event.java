@@ -1,132 +1,153 @@
 package models;
 
 public class Event {
-    private String id;
-    private String person;
-    private String latitude;
-    private String longitude;
-    private String country;
-    private String city;
-    private String eventType;
-    private String year;
+  private String descendant;
+  private String eventID;
+  private String personID;
+  private String latitude;
+  private String longitude;
+  private String country;
+  private String city;
+  private String eventType;
+  private String year;
 
-    /**
-     * Unique identifier for this event (non-empty string)
-     * @return String representation of event's id
-     */
-    public String getId() {
-        return id;
-    }
+  public Event(String descendant, String eventID, String personID, String latitude, String longitude, String country, String city, String eventType, String year){
+    this.descendant = descendant;
+    this.eventID = eventID;
+    this.personID = personID;
+    this.latitude = latitude;
+    this.longitude = longitude;
+    this.country = country;
+    this.city = city;
+    this.eventType = eventType;
+    this.year = year;
+  }
 
-    /**
-     * @param id type String
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
+  public String getDescendant(){
+    return descendant;
+  }
 
-    /**
-     * ID of person to which this event belongs
-     * @return String representation of person's id
-     */
-    public String getPerson() {
-        return person;
-    }
+  public void setDescendant(String descendant){
+    this.descendant = descendant;
+  }
 
-    /**
-     * @param person type String
-     */
-    public void setPerson(String person) {
-        this.person = person;
-    }
+  /**
+   * Unique identifier for this event (non-empty string)
+   * @return String representation of event's id
+   */
+  public String getEventID() {
+    return eventID;
+  }
 
-    /**
-     * Latitude of event's location
-     * @return String representation of latitude
-     */
-    public String getLatitude() {
-        return latitude;
-    }
+  /**
+   * @param id type String
+   */
+  public void setEventID(String eventID) {
+    this.eventID = eventID;
+  }
 
-    /**
-     * @param latitude type String
-     */
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
+  /**
+   * ID of person to which this event belongs
+   * @return String representation of person's id
+   */
+  public String getPersonID() {
+    return personID;
+  }
 
-    /**
-     * Longitude of event's location
-     * @return String representation of longitude
-     */
-    public String getLongitude() {
-        return longitude;
-    }
+  /**
+   * @param person type String
+   */
+  public void setPersonID(String personID) {
+    this.personID = personID;
+  }
 
-    /**
-     * @param longitude type String
-     */
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
+  /**
+   * Latitude of event's location
+   * @return String representation of latitude
+   */
+  public String getLatitude() {
+    return latitude;
+  }
 
-    /**
-     * Country in which event occurred
-     * @return String representation of country
-     */
-    public String getCountry() {
-        return country;
-    }
+  /**
+   * @param latitude type String
+   */
+  public void setLatitude(String latitude) {
+    this.latitude = latitude;
+  }
 
-    /**
-     * @param country type String
-     */
-    public void setCountry(String country) {
-        this.country = country;
-    }
+  /**
+   * Longitude of event's location
+   * @return String representation of longitude
+   */
+  public String getLongitude() {
+    return longitude;
+  }
 
-    /**
-     * City in which event occurred
-     * @return String representation of city
-     */
-    public String getCity() {
-        return city;
-    }
+  /**
+   * @param longitude type String
+   */
+  public void setLongitude(String longitude) {
+    this.longitude = longitude;
+  }
 
-    /**
-     * @param city type String
-     */
-    public void setCity(String city) {
-        this.city = city;
-    }
+  /**
+   * Country in which event occurred
+   * @return String representation of country
+   */
+  public String getCountry() {
+    return country;
+  }
 
-    /**
-     * Type of event (birth, baptism, christening, marriage, death, etc.)
-     * @return String representation of event type
-     */
-    public String getEventType() {
-        return eventType;
-    }
+  /**
+   * @param country type String
+   */
+  public void setCountry(String country) {
+    this.country = country;
+  }
 
-    /**
-     * @param eventType type String
-     */
-    public void setEventType(String eventType) {
-        this.eventType = eventType;
-    }
+  /**
+   * City in which event occurred
+   * @return String representation of city
+   */
+  public String getCity() {
+    return city;
+  }
 
-    /**
-     * Year in which event occurred
-     * @return String representation of year
-     */
-    public String getYear() {
-        return year;
-    }
+  /**
+   * @param city type String
+   */
+  public void setCity(String city) {
+    this.city = city;
+  }
 
-    /**
-     * @param year type String
-     */
-    public void setYear(String year) {
-        this.year = year;
-    }
+  /**
+   * Type of event (birth, baptism, christening, marriage, death, etc.)
+   * @return String representation of event type
+   */
+  public String getEventType() {
+    return eventType;
+  }
+
+  /**
+   * @param eventType type String
+   */
+  public void setEventType(String eventType) {
+    this.eventType = eventType;
+  }
+
+  /**
+   * Year in which event occurred
+   * @return String representation of year
+   */
+  public String getYear() {
+    return year;
+  }
+
+  /**
+   * @param year type String
+   */
+  public void setYear(String year) {
+    this.year = year;
+  }
 }

@@ -3,6 +3,7 @@ package regRes;
 public class EventRequest extends Request {
 
     private String id = null;
+    private String authToken = null;
 
     /**
      * Creates a new EventRequest with eventID
@@ -10,6 +11,16 @@ public class EventRequest extends Request {
      */
     public EventRequest(String id){
         this.id = id;
+    }
+
+    public EventRequest(){}
+
+    public void setAuthToken(String authToken){
+      this.authToken = authToken;
+    }
+
+    public String getAuthToken(){
+      return authToken;
     }
 
     /**
